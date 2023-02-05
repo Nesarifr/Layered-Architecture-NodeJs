@@ -1,0 +1,24 @@
+config:
+  target: "http://localhost:8080"
+  phases:
+    - duration: 10
+      arrivalRate: 20
+      name: "20 usuarios"
+  payload:
+    path: "./auth.csv"
+    fields:
+      - "email"
+      - "password"
+
+
+scenarios:
+  - name: "login and all products"
+    flow:
+      - post:
+          url: "/api/login"
+          json:
+            email: "{{ email }}"
+            password: "{{ password }}"
+      - think: 1
+      - get:
+          url: "/api/productos"

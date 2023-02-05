@@ -1,0 +1,30 @@
+<header class="container">
+    <nav>
+        <h1>Bienvenido {{user}} </h1>
+        <div>
+            {{#if user.nombre}}
+                <a href="./carritos" class="carrito"><button>Carrito</button></a>
+                <a href="./api/login/logout" class="logout"><button>Log Out</button></a>
+                <a href="./productos" class="administrador"><button>Administrador</button></a>
+            {{else}}
+                <a href="./login/" class="Login"><button>Login</button></a>
+                <a href="./register/" class="Register"><button>Register</button></a>
+                <a href="./productos" class="administrador"><button>Administrador</button></a>
+            {{/if}}
+            
+        </div>
+    </nav>
+</header>
+<div class="contenedor-varios">
+        <div class="productos-handlebars">
+            {{#if productos.error}}
+                {{> error}}
+            {{else}}
+                {{> cards}}
+            {{/if}}
+        </div>
+</div>
+
+<script src="../../js/compraProducts.js"></script>
+<script src="../../js/adminProduct.js"></script>
+<script src="../index.js"></script>
